@@ -1,0 +1,460 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 3.5.0 #9253 (Mar 24 2016) (Linux)
+                                      4 ; This file was generated Wed May  2 13:28:48 2018
+                                      5 ;--------------------------------------------------------
+                                      6 	.module stm8_adc_01
+                                      7 	.optsdcc -mstm8
+                                      8 	
+                                      9 ;--------------------------------------------------------
+                                     10 ; Public variables in this module
+                                     11 ;--------------------------------------------------------
+                                     12 	.globl _main
+                                     13 	.globl _IRQ_Handled_ADC1
+                                     14 	.globl _pin_cfg
+                                     15 	.globl _uart_rx_data
+                                     16 	.globl _uart_rx_byte
+                                     17 	.globl _uart_tx_data
+                                     18 	.globl _uart_tx_byte
+                                     19 	.globl _uart1_cfg
+                                     20 	.globl _clk_cfg
+                                     21 	.globl _uart1_interrupt
+                                     22 	.globl _delay_ms
+                                     23 	.globl _tim4_cfg
+                                     24 	.globl _delay_interrupt
+                                     25 	.globl _GPIO_Init
+                                     26 	.globl _ADC1_ClearITPendingBit
+                                     27 	.globl _ADC1_GetConversionValue
+                                     28 	.globl _ADC1_StartConversion
+                                     29 	.globl _ADC1_ITConfig
+                                     30 	.globl _ADC1_Init
+                                     31 	.globl _ADC1_DeInit
+                                     32 	.globl _adc2
+                                     33 	.globl _count
+                                     34 ;--------------------------------------------------------
+                                     35 ; ram data
+                                     36 ;--------------------------------------------------------
+                                     37 	.area DATA
+      000000                         38 _count::
+      000000                         39 	.ds 2
+      000002                         40 _adc2::
+      000002                         41 	.ds 2
+                                     42 ;--------------------------------------------------------
+                                     43 ; ram data
+                                     44 ;--------------------------------------------------------
+                                     45 	.area INITIALIZED
+                                     46 ;--------------------------------------------------------
+                                     47 ; Stack segment in internal ram 
+                                     48 ;--------------------------------------------------------
+                                     49 	.area	SSEG
+      000000                         50 __start__stack:
+      000000                         51 	.ds	1
+                                     52 
+                                     53 ;--------------------------------------------------------
+                                     54 ; absolute external ram data
+                                     55 ;--------------------------------------------------------
+                                     56 	.area DABS (ABS)
+                                     57 ;--------------------------------------------------------
+                                     58 ; interrupt vector 
+                                     59 ;--------------------------------------------------------
+                                     60 	.area HOME
+      000000                         61 __interrupt_vect:
+      000000 82v00u00u00             62 	int s_GSINIT ;reset
+      000004 82 00 00 00             63 	int 0x0000 ;trap
+      000008 82 00 00 00             64 	int 0x0000 ;int0
+      00000C 82 00 00 00             65 	int 0x0000 ;int1
+      000010 82 00 00 00             66 	int 0x0000 ;int2
+      000014 82 00 00 00             67 	int 0x0000 ;int3
+      000018 82 00 00 00             68 	int 0x0000 ;int4
+      00001C 82 00 00 00             69 	int 0x0000 ;int5
+      000020 82 00 00 00             70 	int 0x0000 ;int6
+      000024 82 00 00 00             71 	int 0x0000 ;int7
+      000028 82 00 00 00             72 	int 0x0000 ;int8
+      00002C 82 00 00 00             73 	int 0x0000 ;int9
+      000030 82 00 00 00             74 	int 0x0000 ;int10
+      000034 82 00 00 00             75 	int 0x0000 ;int11
+      000038 82 00 00 00             76 	int 0x0000 ;int12
+      00003C 82 00 00 00             77 	int 0x0000 ;int13
+      000040 82 00 00 00             78 	int 0x0000 ;int14
+      000044 82 00 00 00             79 	int 0x0000 ;int15
+      000048 82 00 00 00             80 	int 0x0000 ;int16
+      00004C 82 00 00 00             81 	int 0x0000 ;int17
+      000050 82v00u00u3D             82 	int _uart1_interrupt ;int18
+      000054 82 00 00 00             83 	int 0x0000 ;int19
+      000058 82 00 00 00             84 	int 0x0000 ;int20
+      00005C 82 00 00 00             85 	int 0x0000 ;int21
+      000060 82v00u01u02             86 	int _IRQ_Handled_ADC1 ;int22
+      000064 82v00u00u00             87 	int _delay_interrupt ;int23
+      000068 82 00 00 00             88 	int 0x0000 ;int24
+      00006C 82 00 00 00             89 	int 0x0000 ;int25
+      000070 82 00 00 00             90 	int 0x0000 ;int26
+      000074 82 00 00 00             91 	int 0x0000 ;int27
+      000078 82 00 00 00             92 	int 0x0000 ;int28
+      00007C 82 00 00 00             93 	int 0x0000 ;int29
+                                     94 ;--------------------------------------------------------
+                                     95 ; global & static initialisations
+                                     96 ;--------------------------------------------------------
+                                     97 	.area HOME
+                                     98 	.area GSINIT
+                                     99 	.area GSFINAL
+                                    100 	.area GSINIT
+      000000                        101 __sdcc_gs_init_startup:
+      000000                        102 __sdcc_init_data:
+                                    103 ; stm8_genXINIT() start
+      000000 AEr00r00         [ 2]  104 	ldw x, #l_DATA
+      000003 27 07            [ 1]  105 	jreq	00002$
+      000005                        106 00001$:
+      000005 72 4FuFFuFF      [ 1]  107 	clr (s_DATA - 1, x)
+      000009 5A               [ 2]  108 	decw x
+      00000A 26 F9            [ 1]  109 	jrne	00001$
+      00000C                        110 00002$:
+      00000C AEr00r00         [ 2]  111 	ldw	x, #l_INITIALIZER
+      00000F 27 09            [ 1]  112 	jreq	00004$
+      000011                        113 00003$:
+      000011 D6uFFuFF         [ 1]  114 	ld	a, (s_INITIALIZER - 1, x)
+      000014 D7uFFuFF         [ 1]  115 	ld	(s_INITIALIZED - 1, x), a
+      000017 5A               [ 2]  116 	decw	x
+      000018 26 F7            [ 1]  117 	jrne	00003$
+      00001A                        118 00004$:
+                                    119 ; stm8_genXINIT() end
+                                    120 	.area GSFINAL
+      000000 CCr00r80         [ 2]  121 	jp	__sdcc_program_startup
+                                    122 ;--------------------------------------------------------
+                                    123 ; Home
+                                    124 ;--------------------------------------------------------
+                                    125 	.area HOME
+                                    126 	.area HOME
+      000080                        127 __sdcc_program_startup:
+      000080 CCr01r12         [ 2]  128 	jp	_main
+                                    129 ;	return from main will return to caller
+                                    130 ;--------------------------------------------------------
+                                    131 ; code
+                                    132 ;--------------------------------------------------------
+                                    133 	.area CODE
+                                    134 ;	../lib/lib1/inc/stm8s_delay.h: 3: extern void delay_interrupt(void) __interrupt(23) //обработчик прерывания функции delay_ms таймера TIM4
+                                    135 ;	-----------------------------------------
+                                    136 ;	 function delay_interrupt
+                                    137 ;	-----------------------------------------
+      000000                        138 _delay_interrupt:
+                                    139 ;	../lib/lib1/inc/stm8s_delay.h: 5: if(count)
+      000000 CEu00u00         [ 2]  140 	ldw	x, _count+0
+      000003 27 07            [ 1]  141 	jreq	00102$
+                                    142 ;	../lib/lib1/inc/stm8s_delay.h: 6: count--;    //дикримент переменной count
+      000005 CEu00u00         [ 2]  143 	ldw	x, _count+0
+      000008 5A               [ 2]  144 	decw	x
+      000009 CFu00u00         [ 2]  145 	ldw	_count+0, x
+      00000C                        146 00102$:
+                                    147 ;	../lib/lib1/inc/stm8s_delay.h: 7: TIM4->SR1   = 0x00; ////событие обновления не происходило
+      00000C 35 00 53 44      [ 1]  148 	mov	0x5344+0, #0x00
+      000010 80               [11]  149 	iret
+                                    150 ;	../lib/lib1/inc/stm8s_delay.h: 9: void tim4_cfg() //настройка таймера
+                                    151 ;	-----------------------------------------
+                                    152 ;	 function tim4_cfg
+                                    153 ;	-----------------------------------------
+      000011                        154 _tim4_cfg:
+                                    155 ;	../lib/lib1/inc/stm8s_delay.h: 11: TIM4->SR1   = 0x1;   //событие обновления не происходило
+      000011 35 01 53 44      [ 1]  156 	mov	0x5344+0, #0x01
+                                    157 ;	../lib/lib1/inc/stm8s_delay.h: 12: TIM4->IER  |= 1;    // прерывания по обновлению включены
+      000015 72 10 53 43      [ 1]  158 	bset	0x5343, #0
+                                    159 ;	../lib/lib1/inc/stm8s_delay.h: 13: TIM4->PSCR |= 128; // установка предделителя 128
+      000019 72 1E 53 47      [ 1]  160 	bset	0x5347, #7
+                                    161 ;	../lib/lib1/inc/stm8s_delay.h: 14: TIM4->ARR  |= 124;    // значение автоперезагрузки
+      00001D AE 53 48         [ 2]  162 	ldw	x, #0x5348
+      000020 F6               [ 1]  163 	ld	a, (x)
+      000021 AA 7C            [ 1]  164 	or	a, #0x7c
+      000023 F7               [ 1]  165 	ld	(x), a
+      000024 81               [ 4]  166 	ret
+                                    167 ;	../lib/lib1/inc/stm8s_delay.h: 16: void delay_ms(uint16_t ms) //функция выдержки времени
+                                    168 ;	-----------------------------------------
+                                    169 ;	 function delay_ms
+                                    170 ;	-----------------------------------------
+      000025                        171 _delay_ms:
+                                    172 ;	../lib/lib1/inc/stm8s_delay.h: 18: TIM4->CR1  = 0x0;
+      000025 35 00 53 40      [ 1]  173 	mov	0x5340+0, #0x00
+                                    174 ;	../lib/lib1/inc/stm8s_delay.h: 20: count = ms;
+      000029 7B 04            [ 1]  175 	ld	a, (0x04, sp)
+      00002B C7u00u01         [ 1]  176 	ld	_count+1, a
+      00002E 7B 03            [ 1]  177 	ld	a, (0x03, sp)
+      000030 C7u00u00         [ 1]  178 	ld	_count+0, a
+                                    179 ;	../lib/lib1/inc/stm8s_delay.h: 21: TIM4->CR1  = 0x1;
+      000033 35 01 53 40      [ 1]  180 	mov	0x5340+0, #0x01
+                                    181 ;	../lib/lib1/inc/stm8s_delay.h: 22: while(count);
+      000037                        182 00101$:
+      000037 CEu00u00         [ 2]  183 	ldw	x, _count+0
+      00003A 26 FB            [ 1]  184 	jrne	00101$
+      00003C 81               [ 4]  185 	ret
+                                    186 ;	../lib/lib1/inc/stm8s_uart.h: 3: extern void uart1_interrupt(void) __interrupt(18)   // Обработчик прерываний по приему UART
+                                    187 ;	-----------------------------------------
+                                    188 ;	 function uart1_interrupt
+                                    189 ;	-----------------------------------------
+      00003D                        190 _uart1_interrupt:
+                                    191 ;	../lib/lib1/inc/stm8s_uart.h: 6: data = UART1->DR;
+      00003D AE 52 31         [ 2]  192 	ldw	x, #0x5231
+      000040 F6               [ 1]  193 	ld	a, (x)
+      000041 80               [11]  194 	iret
+                                    195 ;	../lib/lib1/inc/stm8s_uart.h: 10: void clk_cfg()
+                                    196 ;	-----------------------------------------
+                                    197 ;	 function clk_cfg
+                                    198 ;	-----------------------------------------
+      000042                        199 _clk_cfg:
+                                    200 ;	../lib/lib1/inc/stm8s_uart.h: 12: CLK->SWR     |= 0xE1;    //выбран основной источник тактиования HSI
+      000042 AE 50 C4         [ 2]  201 	ldw	x, #0x50c4
+      000045 F6               [ 1]  202 	ld	a, (x)
+      000046 AA E1            [ 1]  203 	or	a, #0xe1
+      000048 F7               [ 1]  204 	ld	(x), a
+                                    205 ;	../lib/lib1/inc/stm8s_uart.h: 13: CLK->CKDIVR  |= 0x0; // коэффициент деления частоты HSI-генератора (2MHz)
+      000049 AE 50 C6         [ 2]  206 	ldw	x, #0x50c6
+      00004C F6               [ 1]  207 	ld	a, (x)
+      00004D AE 50 C6         [ 2]  208 	ldw	x, #0x50c6
+      000050 F7               [ 1]  209 	ld	(x), a
+                                    210 ;	../lib/lib1/inc/stm8s_uart.h: 14: CLK->PCKENR1 |= 0b00010100; //включение модуля тактиования UART1 & TIM4
+      000051 AE 50 C7         [ 2]  211 	ldw	x, #0x50c7
+      000054 F6               [ 1]  212 	ld	a, (x)
+      000055 AA 14            [ 1]  213 	or	a, #0x14
+      000057 F7               [ 1]  214 	ld	(x), a
+      000058 81               [ 4]  215 	ret
+                                    216 ;	../lib/lib1/inc/stm8s_uart.h: 17: void uart1_cfg()
+                                    217 ;	-----------------------------------------
+                                    218 ;	 function uart1_cfg
+                                    219 ;	-----------------------------------------
+      000059                        220 _uart1_cfg:
+                                    221 ;	../lib/lib1/inc/stm8s_uart.h: 19: UART1->CR1  |= 0b00000000;   //установка колличества бит передачи 8/9
+      000059 AE 52 34         [ 2]  222 	ldw	x, #0x5234
+      00005C F6               [ 1]  223 	ld	a, (x)
+      00005D AE 52 34         [ 2]  224 	ldw	x, #0x5234
+      000060 F7               [ 1]  225 	ld	(x), a
+                                    226 ;	../lib/lib1/inc/stm8s_uart.h: 20: UART1->CR2  |= 0b00001100;   //разрешение работы RX & TX
+      000061 AE 52 35         [ 2]  227 	ldw	x, #0x5235
+      000064 F6               [ 1]  228 	ld	a, (x)
+      000065 AA 0C            [ 1]  229 	or	a, #0x0c
+      000067 F7               [ 1]  230 	ld	(x), a
+                                    231 ;	../lib/lib1/inc/stm8s_uart.h: 21: UART1->CR3  |= 0b00000000;   //STOP bits 00 - 1 stop bit
+      000068 AE 52 36         [ 2]  232 	ldw	x, #0x5236
+      00006B F6               [ 1]  233 	ld	a, (x)
+      00006C AE 52 36         [ 2]  234 	ldw	x, #0x5236
+      00006F F7               [ 1]  235 	ld	(x), a
+                                    236 ;	../lib/lib1/inc/stm8s_uart.h: 23: UART1->BRR2 |= 0x0;  //сначало записываем скорость передачи в BRR2! / 
+      000070 AE 52 33         [ 2]  237 	ldw	x, #0x5233
+      000073 F6               [ 1]  238 	ld	a, (x)
+      000074 AE 52 33         [ 2]  239 	ldw	x, #0x5233
+      000077 F7               [ 1]  240 	ld	(x), a
+                                    241 ;	../lib/lib1/inc/stm8s_uart.h: 24: UART1->BRR1 |= 0x0d;  //записываеться значение только после записи значения в BRR2! /9600
+      000078 AE 52 32         [ 2]  242 	ldw	x, #0x5232
+      00007B F6               [ 1]  243 	ld	a, (x)
+      00007C AA 0D            [ 1]  244 	or	a, #0x0d
+      00007E F7               [ 1]  245 	ld	(x), a
+      00007F 81               [ 4]  246 	ret
+                                    247 ;	../lib/lib1/inc/stm8s_uart.h: 28: void uart_tx_byte(unsigned char data){
+                                    248 ;	-----------------------------------------
+                                    249 ;	 function uart_tx_byte
+                                    250 ;	-----------------------------------------
+      000080                        251 _uart_tx_byte:
+                                    252 ;	../lib/lib1/inc/stm8s_uart.h: 29: while(!UART1->SR ==1);
+      000080                        253 00101$:
+      000080 AE 52 30         [ 2]  254 	ldw	x, #0x5230
+      000083 F6               [ 1]  255 	ld	a, (x)
+      000084 A0 01            [ 1]  256 	sub	a, #0x01
+      000086 4F               [ 1]  257 	clr	a
+      000087 49               [ 1]  258 	rlc	a
+      000088 A1 01            [ 1]  259 	cp	a, #0x01
+      00008A 27 F4            [ 1]  260 	jreq	00101$
+                                    261 ;	../lib/lib1/inc/stm8s_uart.h: 30: UART1->DR = data;
+      00008C AE 52 31         [ 2]  262 	ldw	x, #0x5231
+      00008F 7B 03            [ 1]  263 	ld	a, (0x03, sp)
+      000091 F7               [ 1]  264 	ld	(x), a
+      000092 81               [ 4]  265 	ret
+                                    266 ;	../lib/lib1/inc/stm8s_uart.h: 34: void uart_tx_data(unsigned char *data, unsigned char len){
+                                    267 ;	-----------------------------------------
+                                    268 ;	 function uart_tx_data
+                                    269 ;	-----------------------------------------
+      000093                        270 _uart_tx_data:
+      000093 88               [ 1]  271 	push	a
+                                    272 ;	../lib/lib1/inc/stm8s_uart.h: 36: while(len--){
+      000094 1E 04            [ 2]  273 	ldw	x, (0x04, sp)
+      000096 7B 06            [ 1]  274 	ld	a, (0x06, sp)
+      000098 6B 01            [ 1]  275 	ld	(0x01, sp), a
+      00009A                        276 00101$:
+      00009A 7B 01            [ 1]  277 	ld	a, (0x01, sp)
+      00009C 0A 01            [ 1]  278 	dec	(0x01, sp)
+      00009E 4D               [ 1]  279 	tnz	a
+      00009F 27 0D            [ 1]  280 	jreq	00104$
+                                    281 ;	../lib/lib1/inc/stm8s_uart.h: 37: uart_tx_byte(*data++);
+      0000A1 F6               [ 1]  282 	ld	a, (x)
+      0000A2 5C               [ 2]  283 	incw	x
+      0000A3 1F 04            [ 2]  284 	ldw	(0x04, sp), x
+      0000A5 89               [ 2]  285 	pushw	x
+      0000A6 88               [ 1]  286 	push	a
+      0000A7 CDr00r80         [ 4]  287 	call	_uart_tx_byte
+      0000AA 84               [ 1]  288 	pop	a
+      0000AB 85               [ 2]  289 	popw	x
+      0000AC 20 EC            [ 2]  290 	jra	00101$
+      0000AE                        291 00104$:
+      0000AE 84               [ 1]  292 	pop	a
+      0000AF 81               [ 4]  293 	ret
+                                    294 ;	../lib/lib1/inc/stm8s_uart.h: 41: unsigned char uart_rx_byte(){
+                                    295 ;	-----------------------------------------
+                                    296 ;	 function uart_rx_byte
+                                    297 ;	-----------------------------------------
+      0000B0                        298 _uart_rx_byte:
+                                    299 ;	../lib/lib1/inc/stm8s_uart.h: 44: while(!UART1->SR);
+      0000B0                        300 00101$:
+      0000B0 AE 52 30         [ 2]  301 	ldw	x, #0x5230
+      0000B3 F6               [ 1]  302 	ld	a, (x)
+      0000B4 4D               [ 1]  303 	tnz	a
+      0000B5 27 F9            [ 1]  304 	jreq	00101$
+                                    305 ;	../lib/lib1/inc/stm8s_uart.h: 45: data = UART1->DR;
+      0000B7 AE 52 31         [ 2]  306 	ldw	x, #0x5231
+      0000BA F6               [ 1]  307 	ld	a, (x)
+                                    308 ;	../lib/lib1/inc/stm8s_uart.h: 46: return data;
+      0000BB 81               [ 4]  309 	ret
+                                    310 ;	../lib/lib1/inc/stm8s_uart.h: 50: void uart_rx_data(unsigned char * data, unsigned char len){
+                                    311 ;	-----------------------------------------
+                                    312 ;	 function uart_rx_data
+                                    313 ;	-----------------------------------------
+      0000BC                        314 _uart_rx_data:
+      0000BC 88               [ 1]  315 	push	a
+                                    316 ;	../lib/lib1/inc/stm8s_uart.h: 51: while(len--){
+      0000BD 1E 04            [ 2]  317 	ldw	x, (0x04, sp)
+      0000BF 7B 06            [ 1]  318 	ld	a, (0x06, sp)
+      0000C1 6B 01            [ 1]  319 	ld	(0x01, sp), a
+      0000C3                        320 00101$:
+      0000C3 7B 01            [ 1]  321 	ld	a, (0x01, sp)
+      0000C5 0A 01            [ 1]  322 	dec	(0x01, sp)
+      0000C7 4D               [ 1]  323 	tnz	a
+      0000C8 27 09            [ 1]  324 	jreq	00104$
+                                    325 ;	../lib/lib1/inc/stm8s_uart.h: 52: *data++ = uart_rx_byte();
+      0000CA 89               [ 2]  326 	pushw	x
+      0000CB CDr00rB0         [ 4]  327 	call	_uart_rx_byte
+      0000CE 85               [ 2]  328 	popw	x
+      0000CF F7               [ 1]  329 	ld	(x), a
+      0000D0 5C               [ 2]  330 	incw	x
+      0000D1 20 F0            [ 2]  331 	jra	00101$
+      0000D3                        332 00104$:
+      0000D3 84               [ 1]  333 	pop	a
+      0000D4 81               [ 4]  334 	ret
+                                    335 ;	./stm8_adc_01.c: 9: void pin_cfg()  //функция настройки GPIO
+                                    336 ;	-----------------------------------------
+                                    337 ;	 function pin_cfg
+                                    338 ;	-----------------------------------------
+      0000D5                        339 _pin_cfg:
+                                    340 ;	./stm8_adc_01.c: 11: GPIOB->DDR |= 0b00100000;   //устанавливаем на выход пин 5 порта B
+      0000D5 AE 50 07         [ 2]  341 	ldw	x, #0x5007
+      0000D8 F6               [ 1]  342 	ld	a, (x)
+      0000D9 AA 20            [ 1]  343 	or	a, #0x20
+      0000DB F7               [ 1]  344 	ld	(x), a
+                                    345 ;	./stm8_adc_01.c: 12: GPIOB->CR1 |= 0b00100000;   //устанавливаем подтяжку пин 5 порта B
+      0000DC AE 50 08         [ 2]  346 	ldw	x, #0x5008
+      0000DF F6               [ 1]  347 	ld	a, (x)
+      0000E0 AA 20            [ 1]  348 	or	a, #0x20
+      0000E2 F7               [ 1]  349 	ld	(x), a
+                                    350 ;	./stm8_adc_01.c: 13: GPIOD->CR2 |= 0b00000000;   //минимальная скорость на выход / без прерывания на вход
+      0000E3 AE 50 13         [ 2]  351 	ldw	x, #0x5013
+      0000E6 F6               [ 1]  352 	ld	a, (x)
+      0000E7 AE 50 13         [ 2]  353 	ldw	x, #0x5013
+      0000EA F7               [ 1]  354 	ld	(x), a
+                                    355 ;	./stm8_adc_01.c: 15: GPIOD->DDR |= 0b00100000;   //устанавливаем на выход пин 5 порта D TX
+      0000EB AE 50 11         [ 2]  356 	ldw	x, #0x5011
+      0000EE F6               [ 1]  357 	ld	a, (x)
+      0000EF AA 20            [ 1]  358 	or	a, #0x20
+      0000F1 F7               [ 1]  359 	ld	(x), a
+                                    360 ;	./stm8_adc_01.c: 16: GPIOD->CR1 |= 0b00100000;   //без подтяжки
+      0000F2 AE 50 12         [ 2]  361 	ldw	x, #0x5012
+      0000F5 F6               [ 1]  362 	ld	a, (x)
+      0000F6 AA 20            [ 1]  363 	or	a, #0x20
+      0000F8 F7               [ 1]  364 	ld	(x), a
+                                    365 ;	./stm8_adc_01.c: 17: GPIOD->CR2 |= 0b00000000;   //без прерывания на вход / минимальная скорость на выход
+      0000F9 AE 50 13         [ 2]  366 	ldw	x, #0x5013
+      0000FC F6               [ 1]  367 	ld	a, (x)
+      0000FD AE 50 13         [ 2]  368 	ldw	x, #0x5013
+      000100 F7               [ 1]  369 	ld	(x), a
+      000101 81               [ 4]  370 	ret
+                                    371 ;	./stm8_adc_01.c: 22: INTERRUPT_HANDLER(IRQ_Handled_ADC1,22)
+                                    372 ;	-----------------------------------------
+                                    373 ;	 function IRQ_Handled_ADC1
+                                    374 ;	-----------------------------------------
+      000102                        375 _IRQ_Handled_ADC1:
+                                    376 ;	./stm8_adc_01.c: 24: adc2=ADC1_GetConversionValue();
+      000102 CDr00r00         [ 4]  377 	call	_ADC1_GetConversionValue
+      000105 CFu00u02         [ 2]  378 	ldw	_adc2+0, x
+                                    379 ;	./stm8_adc_01.c: 26: ADC1_ClearITPendingBit(ADC1_IT_EOC);
+      000108 4B 80            [ 1]  380 	push	#0x80
+      00010A 4B 00            [ 1]  381 	push	#0x00
+      00010C CDr00r00         [ 4]  382 	call	_ADC1_ClearITPendingBit
+      00010F 5B 02            [ 2]  383 	addw	sp, #2
+      000111 80               [11]  384 	iret
+                                    385 ;	./stm8_adc_01.c: 30: int main( void )
+                                    386 ;	-----------------------------------------
+                                    387 ;	 function main
+                                    388 ;	-----------------------------------------
+      000112                        389 _main:
+                                    390 ;	./stm8_adc_01.c: 32: pin_cfg();
+      000112 CDr00rD5         [ 4]  391 	call	_pin_cfg
+                                    392 ;	./stm8_adc_01.c: 34: clk_cfg();
+      000115 CDr00r42         [ 4]  393 	call	_clk_cfg
+                                    394 ;	./stm8_adc_01.c: 36: tim4_cfg();
+      000118 CDr00r11         [ 4]  395 	call	_tim4_cfg
+                                    396 ;	./stm8_adc_01.c: 38: uart1_cfg();
+      00011B CDr00r59         [ 4]  397 	call	_uart1_cfg
+                                    398 ;	./stm8_adc_01.c: 42: GPIO_Init(GPIOC,GPIO_PIN_4,GPIO_MODE_IN_FL_NO_IT);
+      00011E 4B 00            [ 1]  399 	push	#0x00
+      000120 4B 10            [ 1]  400 	push	#0x10
+      000122 4B 0A            [ 1]  401 	push	#0x0a
+      000124 4B 50            [ 1]  402 	push	#0x50
+      000126 CDr00r00         [ 4]  403 	call	_GPIO_Init
+      000129 5B 04            [ 2]  404 	addw	sp, #4
+                                    405 ;	./stm8_adc_01.c: 43: ADC1_DeInit();
+      00012B CDr00r00         [ 4]  406 	call	_ADC1_DeInit
+                                    407 ;	./stm8_adc_01.c: 44: ADC1_Init(ADC1_CONVERSIONMODE_SINGLE, ADC1_CHANNEL_2, ADC1_PRESSEL_FCPU_D8,
+      00012E 4B 00            [ 1]  408 	push	#0x00
+      000130 4B 02            [ 1]  409 	push	#0x02
+      000132 4B 08            [ 1]  410 	push	#0x08
+      000134 4B 00            [ 1]  411 	push	#0x00
+      000136 4B 00            [ 1]  412 	push	#0x00
+      000138 4B 40            [ 1]  413 	push	#0x40
+      00013A 4B 02            [ 1]  414 	push	#0x02
+      00013C 4B 00            [ 1]  415 	push	#0x00
+      00013E CDr00r00         [ 4]  416 	call	_ADC1_Init
+      000141 5B 08            [ 2]  417 	addw	sp, #8
+                                    418 ;	./stm8_adc_01.c: 46: ADC1_ITConfig(ADC1_IT_EOCIE ,ENABLE);
+      000143 4B 01            [ 1]  419 	push	#0x01
+      000145 4B 20            [ 1]  420 	push	#0x20
+      000147 4B 00            [ 1]  421 	push	#0x00
+      000149 CDr00r00         [ 4]  422 	call	_ADC1_ITConfig
+      00014C 5B 03            [ 2]  423 	addw	sp, #3
+                                    424 ;	./stm8_adc_01.c: 50: adc2=0;
+      00014E 5F               [ 1]  425 	clrw	x
+      00014F CFu00u02         [ 2]  426 	ldw	_adc2+0, x
+                                    427 ;	./stm8_adc_01.c: 51: rim();
+      000152 9A               [ 1]  428 	rim 
+      000153                        429 00102$:
+                                    430 ;	./stm8_adc_01.c: 55: GPIOB->ODR ^=0b00100000;  //зажигаем светодиод
+      000153 AE 50 05         [ 2]  431 	ldw	x, #0x5005
+      000156 F6               [ 1]  432 	ld	a, (x)
+      000157 A8 20            [ 1]  433 	xor	a, #0x20
+      000159 F7               [ 1]  434 	ld	(x), a
+                                    435 ;	./stm8_adc_01.c: 57: ADC1_StartConversion();
+      00015A CDr00r00         [ 4]  436 	call	_ADC1_StartConversion
+                                    437 ;	./stm8_adc_01.c: 59: delay_ms(500);//временная задержка
+      00015D 4B F4            [ 1]  438 	push	#0xf4
+      00015F 4B 01            [ 1]  439 	push	#0x01
+      000161 CDr00r25         [ 4]  440 	call	_delay_ms
+      000164 5B 02            [ 2]  441 	addw	sp, #2
+                                    442 ;	./stm8_adc_01.c: 61: uart_tx_data("on, ",4);
+      000166 AEr01r7D         [ 2]  443 	ldw	x, #___str_0+0
+      000169 4B 04            [ 1]  444 	push	#0x04
+      00016B 89               [ 2]  445 	pushw	x
+      00016C CDr00r93         [ 4]  446 	call	_uart_tx_data
+      00016F 5B 03            [ 2]  447 	addw	sp, #3
+                                    448 ;	./stm8_adc_01.c: 65: delay_ms(500);
+      000171 4B F4            [ 1]  449 	push	#0xf4
+      000173 4B 01            [ 1]  450 	push	#0x01
+      000175 CDr00r25         [ 4]  451 	call	_delay_ms
+      000178 5B 02            [ 2]  452 	addw	sp, #2
+      00017A 20 D7            [ 2]  453 	jra	00102$
+      00017C 81               [ 4]  454 	ret
+                                    455 	.area CODE
+      00017D                        456 ___str_0:
+      00017D 6F 6E 2C 20            457 	.ascii "on, "
+      000181 00                     458 	.db 0x00
+                                    459 	.area INITIALIZER
+                                    460 	.area CABS (ABS)

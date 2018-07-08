@@ -1,0 +1,140 @@
+ASxxxx Linker V03.00 + NoICE + sdld,  page 1.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+.  .ABS.                            00000000    00000000 =           0. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00000000  .__.ABS.                           run_fire_but02
+     00000000  l_CABS                          
+     00000000  l_DABS                          
+     00000000  l__CODE                         
+     00000000  s_CABS                          
+     00000000  s_DABS                          
+     00000000  s__CODE                         
+     00000001  l_SSEG                          
+     00000001  s_DATA                          
+     00000003  l_DATA                          
+     00000003  l_GSFINAL                       
+     00000004  s_INITIALIZED                   
+     00000009  l_INITIALIZED                   
+     00000009  l_INITIALIZER                   
+     0000000D  s_SSEG                          
+     0000001A  l_GSINIT                        
+     00000083  l_HOME                          
+     00000251  l_CODE                          
+     00008000  s_HOME                          
+     00008083  s_GSINIT                        
+     0000809D  s_GSFINAL                       
+     000080A0  s_CODE                          
+     000082F1  s_INITIALIZER                   
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 2.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+DATA                                00000001    00000003 =           3. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00000001  _count                             run_fire_but02
+     00000003  _n                                 run_fire_but02
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 3.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+INITIALIZED                         00000004    00000009 =           9. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00000004  _s                                 run_fire_but02
+     00000008  _ms                                run_fire_but02
+     00000009  _msb                               run_fire_but02
+     0000000A  _bs                                run_fire_but02
+     0000000B  _b                                 run_fire_but02
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 4.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+SSEG                                0000000D    00000001 =           1. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 5.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+HOME                                00008000    00000083 =         131. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 6.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+GSINIT                              00008083    0000001A =          26. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 7.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+GSFINAL                             0000809D    00000003 =           3. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 8.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CODE                                000080A0    00000251 =         593. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     000080A0  _delay_interrupt                   run_fire_but02
+     000080B1  _TIM4_cfg                          run_fire_but02
+     000080C5  _delay_ms                          run_fire_but02
+     000080E0  _delay                             run_fire_but02
+     000080EA  _Pin                               run_fire_but02
+     00008117  _RunningUp                         run_fire_but02
+     00008168  _RunningDn                         run_fire_but02
+     000081B9  _runLdUp                           run_fire_but02
+     000081EE  _runLdDn                           run_fire_but02
+     00008223  _buttonD4                          run_fire_but02
+     000082AC  _main                              run_fire_but02
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 9.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+INITIALIZER                         000082F1    00000009 =           9. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 10.
+
+Files Linked                              [ module(s) ]
+
+run_fire_but02.rel                        [ run_fire_but02 ]
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 11.
+
+User Base Address Definitions
+
+HOME = 0x8000
+DATA = 0x0001
+
+

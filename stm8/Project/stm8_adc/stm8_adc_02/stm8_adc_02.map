@@ -1,0 +1,130 @@
+ASxxxx Linker V03.00 + NoICE + sdld,  page 1.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+.  .ABS.                            00000000    00000000 =           0. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00000000  .__.ABS.                           
+     00000000  l_CABS                          
+     00000000  l_DABS                          
+     00000000  l_INITIALIZED                   
+     00000000  l_INITIALIZER                   
+     00000000  l__CODE                         
+     00000000  s_CABS                          
+     00000000  s_DABS                          
+     00000000  s__CODE                         
+     00000001  l_SSEG                          
+     00000001  s_DATA                          
+     00000003  l_GSFINAL                       
+     00000005  l_DATA                          
+     00000006  s_INITIALIZED                   
+     00000006  s_SSEG                          
+     0000001A  l_GSINIT                        
+     00000083  l_HOME                          
+     00000335  l_CODE                          
+     00008000  s_HOME                          
+     00008083  s_GSINIT                        
+     0000809D  s_GSFINAL                       
+     000080A0  s_CODE                          
+     000083D5  s_INITIALIZER                   
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 2.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+DATA                                00000001    00000005 =           5. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00000001  _count                             stm8_adc_02
+     00000003  _IT                                stm8_adc_02
+     00000004  _adc                               stm8_adc_02
+ASxxxx Linker V03.00 + NoICE + sdld,  page 3.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+SSEG                                00000006    00000001 =           1. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 4.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+HOME                                00008000    00000083 =         131. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 5.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+GSINIT                              00008083    0000001A =          26. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 6.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+GSFINAL                             0000809D    00000003 =           3. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 7.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CODE                                000080A0    00000335 =         821. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     000080A0  _delay_interrupt                   stm8_adc_02
+     000080B1  _tim4_cfg                          stm8_adc_02
+     000080C5  _delay_ms                          stm8_adc_02
+     000080DD  _clk_cfg                           stm8_adc_02
+     000080F4  _uart1_cfg                         stm8_adc_02
+     0000811B  _clearStr                          stm8_adc_02
+     00008136  _uart_tx_byte                      stm8_adc_02
+     00008144  _uart_tx_data                      stm8_adc_02
+     00008155  _uart_tx_int                       stm8_adc_02
+     000081BE  _uart_rx_byte                      stm8_adc_02
+     000081CA  _pin_cfg                           stm8_adc_02
+     00008225  _mode                              stm8_adc_02
+     00008233  _adc1_r_cfg                        stm8_adc_02
+     0000828C  _main                              stm8_adc_02
+     00008314  __mulint                           
+     00008335  __modslong                         
+     0000835A  __modulong                         
+     000083CA  __fast_long_neg                    
+ASxxxx Linker V03.00 + NoICE + sdld,  page 8.
+
+Files Linked                              [ module(s) ]
+
+stm8_adc_02.rel                           [ stm8_adc_02 ]
+
+
+Libraries Linked                          [ object file ]
+
+/usr/bin/../share/sdcc/lib/stm8/stm8.lib  [ _mulint.rel ]
+/usr/bin/../share/sdcc/lib/stm8/stm8.lib  [ _modslong.rel ]
+/usr/bin/../share/sdcc/lib/stm8/stm8.lib  [ _modulong.rel ]
+/usr/bin/../share/sdcc/lib/stm8/stm8.lib  [ _fast_long_neg.rel ]
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 9.
+
+User Base Address Definitions
+
+HOME = 0x8000
+DATA = 0x0001
+
+

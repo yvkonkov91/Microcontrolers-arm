@@ -1,0 +1,137 @@
+ASxxxx Linker V03.00 + NoICE + sdld,  page 1.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+.  .ABS.                            00000000    00000000 =           0. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00000000  .__.ABS.                           stm8_adc_01
+     00000000  _ADC1_ClearITPendingBit         
+     00000000  _ADC1_DeInit                    
+     00000000  _ADC1_GetConversionValue        
+     00000000  _ADC1_ITConfig                  
+     00000000  _ADC1_Init                      
+     00000000  _ADC1_StartConversion           
+     00000000  _GPIO_Init                      
+     00000000  l_CABS                          
+     00000000  l_DABS                          
+     00000000  l_INITIALIZED                   
+     00000000  l_INITIALIZER                   
+     00000000  l__CODE                         
+     00000000  s_CABS                          
+     00000000  s_DABS                          
+     00000000  s__CODE                         
+     00000001  l_SSEG                          
+     00000001  s_DATA                          
+     00000003  l_GSFINAL                       
+     00000004  l_DATA                          
+     00000005  s_INITIALIZED                   
+     00000005  s_SSEG                          
+     0000001A  l_GSINIT                        
+     00000083  l_HOME                          
+     00000182  l_CODE                          
+     00008000  s_HOME                          
+     00008083  s_GSINIT                        
+     0000809D  s_GSFINAL                       
+     000080A0  s_CODE                          
+     00008222  s_INITIALIZER                   
+ASxxxx Linker V03.00 + NoICE + sdld,  page 2.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+DATA                                00000001    00000004 =           4. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00000001  _count                             stm8_adc_01
+     00000003  _adc2                              stm8_adc_01
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 3.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+SSEG                                00000005    00000001 =           1. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 4.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+HOME                                00008000    00000083 =         131. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 5.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+GSINIT                              00008083    0000001A =          26. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 6.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+GSFINAL                             0000809D    00000003 =           3. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 7.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CODE                                000080A0    00000182 =         386. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     000080A0  _delay_interrupt                   stm8_adc_01
+     000080B1  _tim4_cfg                          stm8_adc_01
+     000080C5  _delay_ms                          stm8_adc_01
+     000080DD  _uart1_interrupt                   stm8_adc_01
+     000080E2  _clk_cfg                           stm8_adc_01
+     000080F9  _uart1_cfg                         stm8_adc_01
+     00008120  _uart_tx_byte                      stm8_adc_01
+     00008133  _uart_tx_data                      stm8_adc_01
+     00008150  _uart_rx_byte                      stm8_adc_01
+     0000815C  _uart_rx_data                      stm8_adc_01
+     00008175  _pin_cfg                           stm8_adc_01
+     000081A2  _IRQ_Handled_ADC1                  stm8_adc_01
+     000081B2  _main                              stm8_adc_01
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 8.
+
+Files Linked                              [ module(s) ]
+
+stm8_adc_01.rel                           [ stm8_adc_01 ]
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 9.
+
+User Base Address Definitions
+
+HOME = 0x8000
+DATA = 0x0001
+
+
+?ASlink-Warning-Undefined Global '_GPIO_Init' referenced by module 'stm8_adc_01'
+
+?ASlink-Warning-Undefined Global '_ADC1_Init' referenced by module 'stm8_adc_01'
+
+?ASlink-Warning-Undefined Global '_ADC1_ClearITPendingBit' referenced by module 'stm8_adc_01'
+
+?ASlink-Warning-Undefined Global '_ADC1_ITConfig' referenced by module 'stm8_adc_01'
+
+?ASlink-Warning-Undefined Global '_ADC1_StartConversion' referenced by module 'stm8_adc_01'
+
+?ASlink-Warning-Undefined Global '_ADC1_DeInit' referenced by module 'stm8_adc_01'
+
+?ASlink-Warning-Undefined Global '_ADC1_GetConversionValue' referenced by module 'stm8_adc_01'
